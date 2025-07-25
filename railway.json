@@ -4,6 +4,6 @@
     "output": ""
   },
   "start": {
-    "command": "uvicorn main:app --port $PORT"
+    "command": "python main.py"
   }
 }

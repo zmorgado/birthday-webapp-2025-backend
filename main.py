@@ -7,6 +7,7 @@ from fastapi.security import HTTPBasic, HTTPBasicCredentials
 from typing import List
 import sys
 import os
+import uvicorn
 
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
@@ -68,3 +69,7 @@ async def submit_rsvp(rsvp: RSVPRequest, db: Session = Depends(get_db)):
 async def admin_dashboard(db: Session = Depends(get_db)):
     rsvps = db.query(RSVP).all()
     return rsvps
+
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 8000))
+    uvicorn.run(app, host="0.0.0.0", port=port)
