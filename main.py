@@ -97,7 +97,3 @@ async def submit_rsvp(rsvp: RSVPRequest, db: Session = Depends(get_db)):
 async def admin_dashboard(db: Session = Depends(get_db)):
     rsvps = db.query(RSVP).all()
     return rsvps
-
-if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 8080))
-    uvicorn.run(app, host="0.0.0.0", port=port)
